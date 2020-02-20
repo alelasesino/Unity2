@@ -91,6 +91,7 @@ public class BallController : MonoBehaviour
             
             winText.text = "Left Player Winner!";
             btRestart.gameObject.SetActive(true);
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 
         } else if(leftPoints <= 0) {
 
