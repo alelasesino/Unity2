@@ -22,7 +22,7 @@ public class MoveRacket : MonoBehaviour
 
         while(true) {
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
             OutputTime();
 
         }

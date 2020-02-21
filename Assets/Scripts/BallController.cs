@@ -24,6 +24,13 @@ public class BallController : MonoBehaviour
         btRestart.gameObject.SetActive(false);
     }
 
+    private void Update() {
+        
+        if(Input.GetKeyDown(KeyCode.N)) 
+            SceneManager.LoadScene("LevelTwo");
+
+    }
+
     void OnCollisionEnter2D(Collision2D col) {
         
         if(col.gameObject.name == "RacketLeft") {
@@ -32,6 +39,7 @@ public class BallController : MonoBehaviour
             Vector2 dir = new Vector2(1,y).normalized;
             GetComponent<Rigidbody2D>().velocity = dir * speed;
             leftPoints++;
+            checkLevelUp();
 
         }
 
@@ -41,6 +49,7 @@ public class BallController : MonoBehaviour
             Vector2 dir = new Vector2(-1,y).normalized;
             GetComponent<Rigidbody2D>().velocity = dir * speed;
             rightPoints++;
+            checkLevelUp();
 
         }
 
@@ -85,8 +94,15 @@ public class BallController : MonoBehaviour
 
     }
 
+    private void checkLevelUp() {
+
+        if(rightPoints == 15)
+            SceneManager.LoadScene("LevelTwo");
+
+    }
+
     private void checkWin() {
-    
+
         if(rightPoints <= 0) {
             
             winText.text = "Left Player Winner!";
