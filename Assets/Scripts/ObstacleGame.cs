@@ -6,21 +6,26 @@ public class ObstacleGame : MonoBehaviour
 {
 
     public GameObject obstacleDynamic;
-    private GameObject obstacleDynamicCreated;
 
     void Start()
     {
+        
         StartCoroutine("start");
+
     }
 
     IEnumerator start() {
 
         while(true) {
             
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
             OutputTime();
-            yield return new WaitForSeconds(3f);
-            Destroy(obstacleDynamicCreated);
+            yield return new WaitForSeconds(1f);
+            
+            GameObject[] obstacles =  GameObject.FindGameObjectsWithTag("Obstacle");
+            
+            foreach(GameObject obstacle in obstacles)
+                    Destroy(obstacle);
 
         }
 
@@ -28,8 +33,12 @@ public class ObstacleGame : MonoBehaviour
 
     private void OutputTime() {
 
-        Vector3 position = new Vector3(Random.Range(5.0f,49.0f),Random.Range(14.0f,-14.0f),0);
-        obstacleDynamicCreated = Instantiate(obstacleDynamic,position,Quaternion.identity);
+        int randomNumber = Mathf.RoundToInt(Random.Range(1,4));
+
+        for(int i = 1; i<= randomNumber; i++){
+            Vector3 position = new Vector3(Random.Range(5.0f,49.0f),Random.Range(14.0f,-14.0f),0);
+            Instantiate(obstacleDynamic,position,Quaternion.identity);
+        }
         
     }
 

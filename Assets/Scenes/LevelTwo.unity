@@ -568,9 +568,8 @@ MonoBehaviour:
   rightText: {fileID: 2141099318}
   winText: {fileID: 1721494007}
   btRestart: {fileID: 1454653093}
-  leftPoints: 0
-  rightPoints: 0
   speed: 30
+  gameState: {fileID: 0}
 --- !u!50 &698637546
 Rigidbody2D:
   serializedVersion: 4
